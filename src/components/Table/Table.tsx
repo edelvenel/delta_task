@@ -61,7 +61,7 @@ export function Table({ rows, graphData }: ITableProps) {
   return (
     <table className={css.table}>
       <thead>
-        <tr>
+        <tr className={css.tr}>
           {header.columns.map((title, idx) => (
             <th key={idx} className={cn(css.td, css.th)}>
               <Column column={title} />
@@ -72,7 +72,7 @@ export function Table({ rows, graphData }: ITableProps) {
       <tbody>
         {rows.map((row, rowIdx) => (
           <Fragment key={rowIdx}>
-            <tr>
+            <tr className={css.tr}>
               {row.columns.map((column, columnIdx) => (
                 <td
                   key={rowIdx + "-" + columnIdx}
@@ -83,7 +83,7 @@ export function Table({ rows, graphData }: ITableProps) {
                 </td>
               ))}
             </tr>
-            <tr>
+            <tr className={css.tr}>
               <AnimatePresence>
                 {clickedRow === rowIdx && (
                   <td

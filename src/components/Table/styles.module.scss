@@ -2,8 +2,13 @@
   align-items: center;
 }
 
-.td {
+.tr {
   position: relative;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.td {
   padding: 0;
   border: 2px solid #fff;
 }
