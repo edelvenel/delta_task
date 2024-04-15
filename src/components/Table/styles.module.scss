@@ -1,12 +1,19 @@
-.table {
-  display: grid;
-  gap: 4px;
-  grid-template-columns: repeat(4, max-content);
+.graph {
+  align-items: center;
 }
 
-.graph {
-  grid-column-start: 1;
-  grid-column-end: 5;
-  display: flex;
-  justify-content: center;
+.td {
+  position: relative;
+  padding: 0;
+  border: 2px solid #fff;
+}
+
+.table {
+  min-width: fit-content;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.th {
+  font-weight: normal;
 }
