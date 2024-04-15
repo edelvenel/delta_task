@@ -1,0 +1,12 @@
+.table {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(4, max-content);
+}
+
+.graph {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  display: flex;
+  justify-content: center;
+}

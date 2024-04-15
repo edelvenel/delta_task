@@ -1,0 +1,50 @@
+.column {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.label {
+  justify-content: flex-start;
+}
+
+.today {
+  justify-content: flex-end;
+  background-color: #edf8ff;
+}
+
+.yesterday {
+  display: flex;
+  justify-content: space-between;
+  gap: 26px;
+}
+
+.average {
+  justify-content: flex-end;
+}
+
+.diffPercent {
+  font-weight: bold;
+  text-align: end;
+  min-width: 42px;
+}
+
+.textGreen {
+  color: green;
+}
+
+.textRed {
+  color: red;
+}
+
+.title {
+  justify-content: center;
+  cursor: default;
+}
+
+.yesterdayValue {
+  text-align: end;
+  min-width: 50%;
+}
