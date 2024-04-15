@@ -12,13 +12,3 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-body {
-  margin: 0;
-  place-items: center;
-}
-
-#root {
-  margin-left: auto;
-  margin-right: auto;
-}
