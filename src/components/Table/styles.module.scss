@@ -9,12 +9,12 @@
 }
 
 .td {
+  text-wrap: nowrap;
   padding: 0;
   border: 2px solid #fff;
 }
 
 .table {
-  min-width: fit-content;
   border-spacing: 0;
   overflow: hidden;
 }
