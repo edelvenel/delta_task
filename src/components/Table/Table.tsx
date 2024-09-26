@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { ColumnNames, ColumnType, IRow } from "../../types";
 import { Column } from "../Column";
 import css from "./styles.module.scss";
 import { Graph } from "../Graph";
-import { subDays } from "date-fns";
+import { startOfDay, subDays } from "date-fns";
+import cn from "classnames";
+import { AnimatePresence } from "framer-motion";
 
 interface ITableProps {
   rows: IRow[];
@@ -19,7 +21,7 @@ export function Table({ rows, graphData }: ITableProps) {
 
   const days = [...new Array(5)]
     .map((_, idx) => {
-      return subDays(new Date(), idx);
+      return subDays(startOfDay(new Date()), idx);
     })
     .reverse();
 
@@ -57,29 +59,46 @@ export function Table({ rows, graphData }: ITableProps) {
   }
 
   return (
-    <div className={css.table}>
-      {header.columns.map((title, idx) => (
-        <div key={idx}>
-          <Column column={title} />
-        </div>
-      ))}
-      {rows.map((row, rowIdx) => (
-        <>
-          {row.columns.map((column, columnIdx) => (
-            <div
-              key={rowIdx + "-" + columnIdx}
-              onClick={() => handleOnClick(rowIdx)}
-            >
-              <Column column={column} />
-            </div>
+    <table className={css.table}>
+      <thead>
+        <tr className={css.tr}>
+          {header.columns.map((title, idx) => (
+            <th key={idx} className={cn(css.td, css.th)}>
+              <Column column={title} />
+            </th>
           ))}
-          {clickedRow === rowIdx && (
-            <div key={rowIdx} className={css.graph}>
-              <Graph days={days} data={graphData[rowIdx]} />
-            </div>
-          )}
-        </>
-      ))}
-    </div>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, rowIdx) => (
+          <Fragment key={rowIdx}>
+            <tr className={css.tr}>
+              {row.columns.map((column, columnIdx) => (
+                <td
+                  key={rowIdx + "-" + columnIdx}
+                  className={css.td}
+                  onClick={() => handleOnClick(rowIdx)}
+                >
+                  <Column column={column} />
+                </td>
+              ))}
+            </tr>
+            <tr className={css.tr}>
+              <AnimatePresence>
+                {clickedRow === rowIdx && (
+                  <td
+                    colSpan={4}
+                    key={rowIdx}
+                    className={cn(css.graph, css.td)}
+                  >
+                    <Graph days={days} data={graphData[rowIdx]} />
+                  </td>
+                )}
+              </AnimatePresence>
+            </tr>
+          </Fragment>
+        ))}
+      </tbody>
+    </table>
   );
 }

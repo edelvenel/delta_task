@@ -15,6 +15,7 @@
     "@mui/x-charts": "^7.2.0",
     "classnames": "^2.5.1",
     "date-fns": "^3.6.0",
+    "framer-motion": "^11.0.28",
     "highcharts": "^11.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
